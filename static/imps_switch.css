@@ -1,0 +1,52 @@
+/* ********************************************
+/* VIEW SWITCH 
+/* *********************************************/
+
+/* LOCATION OF VIEW SWITCH IN HEADER */
+.switch{
+  position:absolute; 
+  top:20px; 
+  left:70%;
+  z-index:1000; 
+  width: 150px; 
+}
+
+/* VIEW SWITCH BUTTON CONTAINER */
+.view_switch{
+    padding: 5px;
+    border-radius: 25px; 
+    background-color: #ddd;
+    height: 42px;
+    width: 90px;
+}
+ 
+/* COMMON VIEW SWITCH BUTTON PROPERTIES */
+button.view{
+    height: 42px;
+    width: 42px;
+    border-radius: 21px;
+    background-size: 38px 38px;
+    background-repeat: no-repeat;
+    border-style: solid;
+}
+
+
+/* MOBILE VIEW ACTIVE BUTTON */
+button.mobile{
+    background-image: url("images/icons/mobile_icon.png");
+}
+
+/* MOBILE VIEW INACTIVE BUTTON */
+button.mobile_set_view{
+    background-image: url("images/icons/mobile_set_icon.png");
+}
+
+/* DESKTOP VIEW ACTIVE BUTTON */
+button.desktop{
+    background-image: url("images/icons/desktop_icon.png");
+}
+
+/* DESKTOP VIEW INACTIVE BUTTON */
+button.desktop_set_view{
+    background-image: url("images/icons/desktop_set_icon.png");
+}

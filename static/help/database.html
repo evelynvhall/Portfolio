@@ -1,0 +1,24 @@
+<link rel="stylesheet" href="help.css">
+<h1>Notes on setting up the database</h1>
+<hr>
+<h2>Prerequisites</h2>
+<p>You must have MySQl or Mariadb running to use IMPS.
+Once you have a working installation of your database server, 
+you will need a database for IMPS to use and a user/password 
+combination for a user that has permissions to that db.</p>
+<p>The setup.sql file included with IMPS contains the necessary
+commands to create and structure the IMPS database and to 
+create a user with the necessary permissions. While the file
+has a default username and password provided, you should
+edit the file to change these to something unique to your
+IMPS install for security purposes.</p>
+<p>The line to edit is:</p>
+<p><code>CREATE USER IF NOT EXISTS 'box_user'@'localhost' 
+IDENTIFIED BY 'box_pass';</code></p>
+<p>Change <code>box_user</code> and <code>box_pass</code></p>
+<p><b>Setup database on MySQL / Mariadb</b></p>
+<ol>
+<li><code>sudo mysql -u root</code></li>
+<li><code>mysql> source static/backups/setup.sql</code></li>
+<li><code>quit;</code></li>
+</ol>

@@ -1,0 +1,224 @@
+.add {
+	background-image: url("images/icons/add_icon.png");
+}
+
+.back {
+	background-image: url("images/icons/back_icon.png");
+}
+
+.backup {
+	background-image: url("images/icons/backup_icon.png");
+}
+
+.bar {
+	background-image: url("images/icons/bar_icon.png");
+}
+
+.box {
+	background-image: url("images/icons/box_icon.png");
+}
+
+.box_closed {
+	background-image: url("images/icons/box_closed_icon.png");
+}
+
+.box_closed_dis {
+        background-image: url("images/icons/box_closed_icon.png");
+        opacity: 0.3;
+}
+
+.box_full {
+	background-image: url("images/icons/box_full_icon.png");
+	width: 90px;
+}
+
+.button_a{
+  color: #000000;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.button_a:hover {
+  color: #fff; /* Or the desired default color */
+}
+
+.button_small{ 
+   width: 90px;
+}
+.button_smallm{ 
+   width: 100px;
+}
+.button_med{ 
+   width: 125px;
+}
+.button_medw{ 
+   width: 140px;
+}
+
+.button_wide{ 
+   width: 160px;
+}
+button_xwide{
+   width: 200px;
+}
+.button_xxwide{
+   width: 220px;
+}
+.cancel {
+        background-image: url("images/icons/cancel.png");
+}
+
+.columns {
+        background-image: url("images/icons/columns_icon.png");
+}
+
+
+
+.list {
+        background-image: url("images/icons/list_icon.png");
+}
+
+.download {
+	background-image: url("images/icons/download_icon.png");
+}
+
+.edit {
+	background-image: url("images/icons/edit_icon.png");
+}
+
+.home {
+	background-image: url("images/icons/home_icon.png");
+}
+
+
+.edit_dis {
+        background-image: url("images/icons/edit_icon.png");
+        opacity: 0.3;
+}
+	
+
+
+.ico_imps {
+	background-color: #a40000;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: 40px 40px;
+	border-radius: 7px;
+	border: 0px;
+	color: white;
+	font-size: 14px;
+        font-weight: bold;
+	height: 46px;
+	line-height: 0px;
+	margin-bottom: 5px;
+	padding: 8px 8px 8px 8px;
+	vertical-align: middle;
+	width: 46px;
+}
+
+.ico_imps:disabled {
+        opacity:0.3;
+	!important;
+}
+
+.loc {
+	background-image: url("images/icons/loc_icon.png");
+}
+
+.login {
+        background-image: url("images/icons/login_icon.png");
+}
+
+
+.print {
+        background-image: url("images/icons/print_icon.png");
+}
+ 
+.qr {
+	background-image: url("images/icons/qr_icon.png");
+}
+
+.imps {
+	background-color: #a40000;
+	background-repeat: no-repeat;
+	background-size: 40px 40px;
+	border-radius: 7px;
+	border: 0px;
+	color: white;
+	font-size: 14px;
+        font-weight: bold;
+	height: 42px;
+	line-height: 0px;
+	margin-bottom: 5px;
+	/*margin-left: 5px;*/
+	margin-top: 5px;
+	padding: 8px 8px 8px 8px;
+	text-align: right;
+	vertical-align: middle;
+}
+
+.imps_tab_off {
+	background-color: #444;
+	border-radius: 7px 7px 0px 0px;
+	border: 0px;
+	color: white;
+	font-size: 14px;
+	font-weight: bold;
+	height: 42px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	margin-top: 5px;
+	padding: 8px 8px 8px 8px;
+	text-align: left;
+	vertical-align: bottom;
+	width: 100px;
+}
+
+.imps_tab_on {
+	background-color: #a40000;
+	border-radius: 7px 7px 0px 0px;
+	border: 0px;
+	color: white;
+	font-size: 14px;
+	font-weight: bold;
+	height: 42px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	margin-top: 25px;
+	padding: 8px 8px 8px 8px;
+	text-align: left;
+	vertical-align: bottom;
+}
+
+
+.photo {
+	background-image: url("images/icons/photo_icon.png");
+}
+
+.save {
+	background-image: url("images/icons/save_icon.png");
+}
+
+.search {
+	background-image: url("images/icons/search_icon.png");
+}
+
+.trash {
+	background-image: url("images/icons/trash_icon.png");
+}
+
+.trash_dis {
+    backround-color: #aaa;
+    !important;
+}
+
+.update {
+	background-image: url("images/icons/update_icon.png");
+}
+
+.warn_text{
+        color: #a40000;
+        font-size: 18px;
+        font-weight: bold;
+
+}

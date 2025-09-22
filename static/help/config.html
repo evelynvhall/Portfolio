@@ -1,0 +1,63 @@
+<link rel="stylesheet" href="help.css">
+<h1>Configuring IMPS</h1>
+<hr>
+<p>Configure database settings and IMPS directories in the imps_config.toml file 
+located in the root of your IMPS install.</p>
+<h2>imps_config.toml</h2>
+<pre>
+## DATABASE CONNECTION
+[DEFAULT]
+host = 127.0.0.1 
+database = box_db
+user = box_user 
+password = box_pass
+
+## DIRECTORIES
+item_image_dir = /static/images/items/
+backup_dir = /var/www/html/static/backups 
+help_dir = /var/www/html/static/help/
+</pre>
+<h2>The Control Panel</h2>
+<p>The IMPS control panel allows you to see various
+IMPS settings and to perform some management tasks that
+don't otherwise fit into the overall IMPS interface.</p>
+<p>The control panel contains four tabs:</p>
+<h3>Boxes Items</h3>
+<b>Categories</b>
+<p> You can add, delete, and modify categories using the 
+<i>Categories</i> button. If you rename a category, all items
+assigned to that category will be assigned to the renamed
+category. If you delete a category, items assigned to that
+category will still be assigned to it, but the category
+name won't appear in the list of categories.</p>
+<b>Locations</b>
+<p> You can add, delete, and modify locations using the
+<i>locations</i> link. If you rename a location, all boxes
+assigned to that location will be assigned to the renamed
+location. If you delete a location, items assigned to that
+location will be assigned to the <i>Unspecified</i> location</p>
+<h3>Backups</h3>
+<p>IMPS can backup your items (the tables from the database)
+and the photos associated with them. The <i>Backup</i> tab
+provides buttons to create these backups and to download the
+latest backup. Imps does not delete old versions of these backups.
+<h3>Cleanup</h3>
+<b>Show orphaned items</b>
+<p>When you delete a box, you can delete all the items in
+the box from the database, reassign all the items to a new
+box, or &quot;orphan&quot; the items, which means they have no box
+assigned to them. While these items will still show in the
+search, inventory, and category views, this tool provides an
+easy way to see all these items in one place.Clicking the 
+<i>Show orphaned items</i> button will show a list of all 
+items which are not assigned to a box.</p>
+<b>Show unlinked photos</b>
+<p>IMPS is designed to remove item photos when items are deleted
+or to delete the old item photo when a new one is uploaded.
+However, the control panel contains a tool to check for photos
+that are not linked to an item and delete them. While rare, this 
+can sometimes occur if there is a database connection problem 
+when editing or deleting an item.</p>
+<h3>Server Info</h3>
+<p>This tab shows a read-only view of the IMPS configuration from
+the imps_config.toml file.</p>

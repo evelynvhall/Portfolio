@@ -1,0 +1,72 @@
+/* ******************************************** */
+/* modal dialog box styles */
+/* ******************************************** */
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  padding-left: 50px;
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}  
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  border: 1px solid #888;
+  padding-right: 20px;
+  width: auto;
+  height: auto;
+  display: inline-block;
+
+}
+ 
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 32px;
+  font-weight: bold;
+}
+ 
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.warn_cont {
+      display: flex;
+      /* Optional: Add space between left and right panels */
+      gap: 5px;
+    }
+
+    .warn_left {
+      width: 30px;
+      /* flex: 1; /* Allows the left panel to take up available space */
+      /* Add other styling like background-color, padding, etc. */
+    }
+
+    .warn_right {
+      display: flex;
+      flex-direction: column; /* Stacks the right panels vertically */
+      flex: 1; /* Allows the right panels container to take up available space */
+      /* Optional: Add space between the two right panels */
+      gap: 5px;
+      padding-left: 30px;
+    }
+
+    .warn_right-top,
+    .warn-right-bottom {
+      /* Add specific styling for each right panel */
+    }
