@@ -1,0 +1,46 @@
+{% include 'includes/header.html' %}
+<div class="container-flex">
+	<div class="row">
+		<p class="page_title">Edit box {{box_num}}</p>
+		<form name="update_box" action="/boxedited" method = "POST">
+		<input type="hidden" name="box_num" id="box_num" value="{{box_num}}">
+	</div><br>
+	<div class="row">
+                <div>
+			<div class="row">
+				Location:
+			</div>
+			<div>
+                        <input list="box_loc" name="box_loc" placeholder="{{box_loc}}"></label>
+                          	<datalist id="box_loc">
+                                        {% for loc_name , loc_num in locations %}
+                                                <option value="{{loc_name}}">{{loc_name}}</option>
+                                        {%endfor%}
+                              	</datalist></label></i>
+        	         </div>
+		</div>
+                <div>
+			<div>
+				Box name
+			</div>
+			<div>
+				<input type="text" id="box_name" name="box_name" size="25" value="{{- box_desc -}}">
+			</div>
+                </div>
+
+	</div>
+	<div>
+		<div>
+               <div>
+                        <button type="submit" id="submit_button" class="imps update button_med">
+ 				Update
+			</button></form>
+                </div>
+		<div>
+                        <a href="boxshowcontent/{{box_num}}">
+				<button class="imps list button_wide">Show contents</button>
+			</a>
+		</div>
+	</div>
+</div>
+{% include 'includes/footer.html' %}

@@ -1,0 +1,41 @@
+{% include 'includes/header.html' %}
+<div class="container-flex">
+        <div class="switch">
+		<div class="row mt-auto" >
+			<div class="view_switch">
+				<a href="/boxviewswitch/{{box_num}}">
+					<button type="submit" class="mobile view">
+					</button>
+				</a>
+				<button type="submit" class="desktop_set_view view">
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+<div>
+	<div class="inline_div">
+			<div class="page_title">
+				Box {{box_num}} contents
+			</div>
+			<div >
+				{% if box_name != "" %}
+					<b>Name:</b> {{box_name | truncate(25)}}
+				{% endif %}
+			</div>
+	</div>
+	<div class="inline_div" style="padding-left:100px;">
+	<a href="#" 
+		onclick="window.open('/boxlabel/{{box_num}}',
+		'newwindow', 'width=750, height=550'); return false;">
+			<button class="ico_imps qr"></button>
+		</a>
+	</div>
+</div>
+{% include "includes/includeitemlist.html" %}
+
+{% with ITEM_IMAGE_DIR=ITEM_IMAGE_DIR %}
+{% include 'includes/sort.html' %}
+{% endwith %}
+{% include 'includes/footer.html' %}
+

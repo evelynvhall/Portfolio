@@ -1,0 +1,31 @@
+{% include 'includes/header.html' %}
+<script>
+// function to pass search term
+function setSearchTerm(){
+  //get the term
+  query_term = document.getElementById("search_term").value;
+  //if blank, load the iventory page
+  if (query_term==""){
+     window.open("inventory","_self");
+  }
+  // else load search page
+  else{
+     window.open("search_result/"+ query_term, "_self");
+  }
+}
+</script>
+
+<!-- page content -->
+
+<p class="page_title">Enter search term</p>
+<div>
+	<input id="search_term" autofocus  type="text">
+</div>
+<div>
+	<button class="imps search button_smallm" onclick="setSearchTerm()" id="search_button" default>
+		Search
+	</button>
+</div>
+
+
+{% include 'includes/footer.html' %}

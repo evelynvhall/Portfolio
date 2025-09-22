@@ -1,0 +1,18 @@
+{% include 'includes/header.html' %}
+
+<!-- page content -->
+
+<p class="page_title">Edit category</p>
+
+<form action="/cp_cateditsuccess/{{cat_num}}" method = "POST" name="edit_cat" onsubmit="return validateForm(event);">
+	<div>
+		<input type="hidden" id="can_num" name="cat_num" value="{{cat_num}}">
+		<input id="cat_name" type="text" name="cat_name" size="12" value="{{cat_name}}">
+	</div>
+	<div>
+		<button type="submit" class="imps update button_med">
+			 Change
+		</button>
+	</div>
+</form>
+{% include 'includes/footer.html' %}

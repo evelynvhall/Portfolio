@@ -1,0 +1,96 @@
+{% include 'includes/header.html' %}
+{% include 'includes/warning.html' %}
+{% set ns = namespace(ocn=" ") %}
+
+<!-- Page content -->
+
+<p class="page_title">Manage Categories </p>
+	<div class="grid-cat-container">
+		<div class="grid-item-left">
+			<b>Cat name</b>
+		</div>
+		 <div class="grid-item">
+			<b>Toal items</b>
+		</div>
+		<div class="grid-item">
+			<b>Edit cat</b>
+		</div>
+		<div class="grid-item">
+			<b>List items</b>
+		</div>
+		<div class="grid-item">
+			<b>Delete</b>
+		</div>
+
+		{% for category in items_per_category %}
+		{% set ns.ocn = cat_name %}
+
+		<div class="grid-item-left">
+			{{category[0]}}
+		</div>
+		<div class="grid-item">
+			{{category[1]}}
+		</div>
+		<div class="grid-item">
+			{% if category[0] == "Uncategorized" %}
+				<button class="btn ico_imps edit_dis"></button>	
+			{% else %}
+			<a href="/cp_editcat/{{category[2]}}">
+				<button class="btn btn-rounded ico_imps edit"></button>
+			</a>
+			{% endif %}
+		</div>
+		<div class="grid-item">
+			{% if category[1] == 0 %}
+				<button class="ico_imps list" disabled></button>
+			{% else %}
+			<a href="/itemsbycategory/{{category[0]}}">
+				<button type="submit" class="ico_imps list"></button>
+			</a>
+			{% endif %}
+		</div>
+		<div class="grid-item">
+			{% if category[0] == "Uncategorized" %}
+				<button class="ico_imps trash" disabled></button>
+			{% else %}
+			<a href="/cp_delcat/{{category[2]}}">
+				<button class="ico_imps trash"></button>
+			</a>
+			{% endif %}
+		</div>
+
+		{% endfor %}
+	</div>
+	<div>
+		<form action="/cp_addcat" name="add_cat" id="add_cat" method="POST" onsubmit="return validateForm(event);" >
+			<input type="text" name="new_cat" id="new_cat" width="14"></input>
+			<button type="submit" class="imps add button_medw">
+				Add category
+			</button>
+		</form>
+	</div>
+<script>
+// Modal dialog setup
+var modal = document.getElementById("myModal");
+var btn = document.getElementById("myBtn");
+var span = document.getElementsByClassName("close")[0];
+span.onclick = function() {
+modal.style.display = "none";
+}
+
+function validateForm() {
+let new_cat = document.forms["add_cat"]["new_cat"].value;
+
+if (new_cat == ""){
+modal.style.display = "block";
+document.getElementById('err_message').innerHTML="A category name is required.";
+span.onclick = function() {
+modal.style.display = "none";
+}
+return false;
+}
+}
+
+</script>
+
+{% include 'includes/footer.html' %}

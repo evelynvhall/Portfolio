@@ -1,0 +1,36 @@
+# imps_config.toml
+
+[database]
+# Settings for the IMPS DB
+
+# IP address of database host in the form "nnn.nnn.nnn.nnn"
+# If IMPS and the DB are hosted on the same server, use "127.0.0.1" 
+host = "127.0.0.1"
+
+# Database name
+name = "box_db2"
+
+# DB user with permissions on named DB
+user = "box_user"
+
+# Password for DB user
+password = "box_pass"
+
+[directories]
+# Settings for the IMPS app
+
+# IP address of the server running IMPS in the form "nnn.nnn.nnn.nnn"
+imps_ip = "192.168.0.100"
+
+# Absolute path to IMPS python file
+imps_path = "/var/www/html2"
+
+# Relative path to store IMPS item images
+item_image_dir = "/static/images/items/"
+
+# Relative path to store DB backups
+backup_dir = "static/backup/" 
+
+[password]
+# Settings for the IMPS app
+password = "imps"

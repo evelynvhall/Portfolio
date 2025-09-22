@@ -1,0 +1,43 @@
+{% include 'includes/header.html' %}
+{% include 'includes/warning.html' %}
+
+<!--page content -->
+
+<p class="page_title">Edit location</p>
+<form action="/cp_locedited/" method = "POST" name="edit_loc" onsubmit="return validateForm(event);">
+<div>
+     <p>Location name:</p>
+	     <input type="hidden" id="loc_num" name="loc_num" value="{{old_loc_num}}">
+	     <input type="hidden" id="old_loc_name" name="old_loc_name" value="{{old_loc_name}}">
+	     <input id="new_loc_name" type="text" name="new_loc_name" size="12" value="{{old_loc_name}}">
+</div>
+<div>
+      <button type="submit" class="imps update button_smallm">
+       Change
+      </button>
+</div>
+</form>
+
+
+<script>
+var modal = document.getElementById("myModal");
+var btn = document.getElementById("myBtn");
+var span = document.getElementsByClassName("close")[0];
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+function validateForm() {
+  let loc_name = document.forms["edit_loc"]["new_loc_name"].value;
+
+  if (loc_name == ""){
+    modal.style.display = "block";
+    document.getElementById('err_message').innerHTML="The location name<br>cannot be blank.";
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+    return false;
+  }
+}
+</script>
+{% include 'includes/footer.html' %}

@@ -1,0 +1,67 @@
+{% include 'includes/header.html' %}
+{% include 'includes/warning.html' %}
+
+<!-- page content -->
+
+<p class="page_title">Edit category</p>
+<br>
+<form action="/cp_editcatsuccess" method = "POST" name="edit_cat" onsubmit="return validateForm(event);">
+	<div>
+		<input type="hidden" id="can_num" name="cat_num" value="{{cat_num}}">
+		<input id="cat_name" type="text" name="cat_name" size="12" value="{{cat_name}}">
+		<button type="submit" class="imps update">
+			 Change
+		</button>
+	</div>
+</form>
+
+<script>
+var modal = document.getElementById("myModal");
+var btn = document.getElementById("myBtn");
+var span = document.getElementsByClassName("close")[0];
+span.onclick = function() {
+modal.style.display = "none";
+}
+
+function validateForm() {
+let num_input = document.forms["select_box"]["box-num"].value;
+
+var num_to_check = Number(num_input) ;
+
+if (num_input == ""){
+//alert("Box number is required");
+modal.style.display = "block";
+document.getElementById('err_message').innerHTML="You must enter a box number.";
+span.onclick = function() {
+modal.style.display = "none";
+}
+return false;
+}
+
+if (isNaN(num_input)){
+modal.style.display = "block";
+document.getElementById('err_message').innerHTML="Box numbers must be numerals.";
+span.onclick = function() {
+modal.style.display = "none";
+}
+return false;
+}
+
+const valid_numbers = {{available_boxes}};
+
+if (valid_numbers.includes(num_to_check)!=1) {
+modal.style.display = "block";
+document.getElementById('err_message').innerHTML="Box "+num_to_check+" is not in use. <br>Please select a different box number.";
+span.onclick = function() {
+modal.style.display = "none";
+}
+
+return false;
+}
+}
+
+</script>
+
+
+
+{% include 'footer.html' %}

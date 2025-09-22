@@ -1,0 +1,97 @@
+{% include 'includes/header.html' %}
+{% include 'includes/warning.html' %}
+
+<!-- Page content -->
+<p class="page_title">You are about to delete Box  {{old_box_num}}</p>
+
+<div class="container-flex">
+<div>
+	<p>You have chosen to move all items from this box to another box.</p>
+</div>
+<div>
+	<div>
+		Select the new box for these items 
+	</div>
+	<div>
+	        <form action="/boxmoveitemssuccess" method = "POST" name="select_box" id="select_box" onsubmit="return validateForm(event);">
+			<input type="hidden" name="box_to_del" id="box_to_del" value="{{old_box_num}}">
+			 <div>
+				<div>
+					<input id="new_box_num" type="text" name="new_box_num" size="3">
+				</div>
+				<div>
+				      <button type="submit" id="submit_button" class="imps box_closed button_small">
+					       Move
+				      </button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+</div>
+
+<script>
+var modal = document.getElementById("myModal");
+var btn = document.getElementById("myBtn");
+var span = document.getElementsByClassName("close")[0];
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+
+function validateForm() {
+  let num_input = document.forms["select_box"]["new_box_num"].value;
+
+  // Check that the box isn't empty
+
+  if (num_input == ""){
+    modal.style.display = "block";
+    document.getElementById('err_message').innerHTML="You must enter a box number.";
+    span.onclick = function() {
+        modal.style.display = "none";
+    };
+    return false;
+  }
+
+  // Check the the number is a number not string
+
+  if (isNaN(num_input)){
+    modal.style.display = "block";
+    document.getElementById('err_message').innerHTML="Box numbers must be <br>numerals. Please enter a <br>number.";
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+    return false;
+  }
+
+  // Check that the box isn't the box being deleted
+
+  if (num_input == {{old_box_num}}){
+    modal.style.display = "block";
+    document.getElementById('err_message').innerHTML="You cannot move items into the<br>box you are deleting.";
+    span.onclick = function() {
+        modal.style.display = "none";
+    };
+    return false;
+  }
+
+
+
+  // Check the the number is a box that is currently in use
+
+  const valid_numbers = {{available_boxes}};
+  var num_to_check = Number(num_input) 
+  if (valid_numbers.includes(num_to_check)!=1) {
+    modal.style.display = "block";
+    document.getElementById('err_message').innerHTML="Box " + num_input  + " is not in use. <br>Please select a different box number.";
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+    return false;
+  }
+
+}
+
+</script>
+
+{% include 'includes/footer.html' %}

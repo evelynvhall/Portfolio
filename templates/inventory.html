@@ -1,0 +1,55 @@
+{% include "includes/header.html" %}
+<script>
+// function to switch view
+function viewSwitch(){
+  //set cookie
+  document.cookie="view=mobile;path=/";
+  //reload the page
+  window.location.reload();
+}
+</script>
+<div class="switch">
+	<div class="container-flex">
+			<div class="view_switch">
+				<button type="submit" class="mobile view" onclick="viewSwitch()">
+			        </button>
+			        <button type="submit" class="desktop_set_view view" disabled>
+			        </button></a>
+			</div>
+	</div>
+</div>
+<div>
+       <p class="page_title">All items</p>
+</div>
+<div class="paginate">
+{% if pagination.has_prev %}<div class="paginate-item">
+        {% set link = 'inventory?page=' + (page-1)| string %}
+                <a href="{{link}}" class="imps button_a">Previous</a>
+        </div>{% endif %}
+
+        <div class="paginate-item">{% if pagination.has_next %}
+        {% set link = 'inventory?page=' + (page+1) | string %}
+                <a href="{{link}}" class="imps button_a">Next</a>
+        {% endif %}
+        </div>
+
+</div>
+{% with ITEM_IMAGE_DIR=ITEM_IMAGE_DIR %}
+{% include "includes/includeitemlist.html" %}
+{% include 'includes/sort.html' %}
+{% endwith %}
+<br>
+<div class="paginate">
+{% if pagination.has_prev %}<div class="paginate-item">
+        {% set link = 'inventory?page=' + (page-1)| string %}
+                <a href="{{link}}" class="imps button_a">Previous</a>
+        </div>{% endif %}
+
+        <div class="paginate-item">{% if pagination.has_next %}
+        {% set link = 'inventory?page=' + (page+1) | string %}
+                <a href="{{link}}" class="imps button_a">Next</a>
+        {% endif %}
+        </div>
+
+</div>
+{% include 'includes/footer.html' %}

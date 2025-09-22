@@ -1,0 +1,248 @@
+{% include 'includes/header.html' %}
+<script>
+/////////////////////////////////////////
+// function to break down and read cookie
+
+function getCookieByName(name) {
+  const cookieString = document.cookie;
+  const cookies = cookieString.split(';');
+
+  for (let i = 0; i < cookies.length; i++) {
+    let cookie = cookies[i].trim(); // Remove leading/trailing whitespace
+
+    // Check if this cookie starts with the desired name followed by an equals sign
+    if (cookie.startsWith(name + '=')) {
+      // Extract and return the value after the name and equals sign
+      return decodeURIComponent(cookie.substring(name.length + 1));
+    }
+  }
+  return null; // Return null if the cookie is not found
+}
+
+/////////////////////////////////////////
+// funtion to switch which tab is visible
+
+function openCP(CPName) {
+  var i;
+  var x = document.getElementsByClassName("CP");;
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+
+  // turn off all tabs before switching
+  document.getElementById(CPName).style.display = "block";
+    element = document.getElementById('BoxItemTab');
+    element.className = 'imps_tab_off';
+    element = document.getElementById('BackupsTab');
+    element.className = 'imps_tab_off';
+    element = document.getElementById('CleanupTab');
+    element.className = 'imps_tab_off';
+    element = document.getElementById('ServerTab');
+    element.className = 'imps_tab_off';
+  
+  // switch tabs based on CPname
+  switch (CPName){    
+     case "BoxItem":
+        element = document.getElementById('BoxItemTab');
+        element.className = 'imps_tab_on';
+        document.cookie = 'imps_tab=BoxItem;';
+        break;
+     case "Backups":
+        element = document.getElementById('BackupsTab');
+        element.className = 'imps_tab_on';
+        document.cookie = 'imps_tab=Backups';
+        break;
+     case "Cleanup":
+        element = document.getElementById('CleanupTab');
+        element.className = 'imps_tab_on';
+        document.cookie = 'imps_tab=Cleanup';
+        break;
+     case "Server":
+        element = document.getElementById('ServerTab');
+        element.className = 'imps_tab_on';
+        document.cookie = 'imps_tab=Server';
+  }
+
+}
+</script>
+<!-- page content -->
+<p class="page_title">Control Panel</p>
+
+<div>
+  <button id="BoxItemTab" class="imps_tab_on" onclick="openCP('BoxItem')" style="width:85px;">Settings</button>
+  <button id="BackupsTab" class="imps_tab_off" onclick="openCP('Backups')" style="width:80px;">Backups</button>
+  <button id="CleanupTab" class="imps_tab_off" onclick="openCP('Cleanup')" style="width:80px;">Cleanup</button>
+  <button id="ServerTab" class="imps_tab_off" onclick="openCP('Server')" style="width:80px;">Server</button>
+</div>
+<div style="width: 90%; background-color:#a40000; padding:0px;">&nbsp;</div>
+<div id ="BoxItem" class="CP">
+	<h3>Settings</h3>
+
+	<div>
+		<div><a href="/cp_categories">
+			<button type="submit" class="imps list button_med"> 
+        	        Categories
+	                </button></a>
+		</div>
+	</div>
+        <div>
+                <div><a href="/cp_locations">
+                        <button type="submit" class="imps loc button_med">
+                        Locations
+                        </button></a>
+                </div>
+        </div>
+        <div>
+                <div><a href="/cp_view">
+                        <button type="submit" class="imps columns button_smallm">
+                        Views
+                        </button></a>
+                </div>
+        </div>
+
+</div>
+<div id ="Cleanup" class="CP" style="display:none">
+	<h3>Clean up items / photos</h3>
+
+        <div>
+                <div><a href="/cp_orphaneditemscleanup">
+                        <button type="submit" class="imps list button_xxwide">
+                        Show orphaned items
+                        </button></a>
+                </div>
+
+        </div>
+        <div>
+                <div><a href="/cp_photofilescleanup">
+                        <button type="submit" class="imps photo button_xxwide">
+                        Show unlinked photos
+                        </button></a>
+                </div>
+
+        </div>
+</div>
+<div id ="Backups" class="CP" style="display:none">
+        <div>
+ 		<h3>Backup photos and/or database</h3>
+	</div>
+        <div><b>Photos</b>
+  		<div>
+			<a href="/cp_photoarchive">
+        	                <button type="submit" class="imps backup" style="width:160px;">
+                	        Archive Photos
+                        	</button>
+	                </a>
+		</div>
+		<div class="input_div">
+			<a href="{{archive_loc}}">
+        	              	<button type="submit" class="btn btn-rounded ico_imps download"></button>
+				Last backup ({{backup_date}})
+			</a>
+		</div>
+	</div>
+        <div><b>Database</b>
+                <div>
+			<a href="/cp_dbbackup">
+                	        <button type="submit" class="imps backup button_wide"> 
+        	                Backup Now
+	                        </button>
+			</a>
+		</div>
+                <div class="input_div">
+			<a href="{{backup_loc}}">
+                        <button type="submit" class="btn btn-rounded ico_imps download"></button>
+			Last backup ({{backup_date}})</a>
+		</div>
+
+	</div>
+</div>
+<div id ="Server" class="CP" style="display:none">
+
+        <div>
+                <h3>
+			Configuration (Read-only) 
+                     <div class="tooltip">
+                                <img src="static/images/icons/info.png" width="20px;">
+                                        <span class="tooltiptext" style="font-size: 16px; font-weight: normal">These values cannot be edited here. Set them in the imps_config.toml file.</span>
+                        </div>
+		</h3>
+
+        </div>
+
+	<div>
+	<form action="/cp_update">
+        <div class="col border">
+		<div class="row p-2">
+			<div class="col col-2">
+				Database server URL
+			</div>
+	                <div>
+				<input readonly type="text" placeholder="{{dbhost}}" name="dbhost" id="dbhost">
+			</div>
+			</div>
+	<div class="row p-2">
+		<div class="col col-2">
+			Database name
+		</div>
+	<div>
+		<input readonly type="text" placeholder="{{dbname}}" name="dbname" id="dbname">
+	</div>
+	</div>
+        <div class="row p-2">
+                <div class="col col-2">
+                         Database username
+        </div>
+        <div>
+                <input readonly type="text" placeholder="{{dbuser}}" name="dbuser" id="dbpass">
+        </div>
+	</div>
+                        <div class="row p-2">
+                                <div class="col col-2">
+                                        Database password
+                                </div>
+                                <div>
+                                        <input readonly type="text" placeholder="{{dbpass}}" name="dbpass" id="dbpass">
+                                </div>
+                        </div>
+                        <div class="row p-2">
+                                <div class="col col-2">
+                                        Image directory
+                                </div>
+                                <div>
+                                        <input readonly type="text" placeholder="{{ITEM_IMAGE_DIR}}" name="dbuser" id="dbpass">
+                                </div>
+                        </div>
+                        <div class="row p-2">
+                                <div class="col col-2">
+                                        Backup directory
+                                </div>
+                                <div>
+                                        <input readonly type="text" placeholder="{{BACKUP_DIR}}" name ="bud" id="bud">
+                                </div>
+                        </div>
+
+		</div>
+
+	</div>
+	</form>
+</div>
+</div>
+<script>
+const imps_tab = getCookieByName('imps_tab');
+if (imps_tab === "BoxItem"){
+        openCP('BoxItem')
+   }
+if (imps_tab === "Backups"){
+        openCP('Backups')
+   }
+if (imps_tab === "Cleanup"){
+        openCP('Cleanup')
+   }
+if (imps_tab === "Server"){
+        openCP('Server')
+   }
+
+</script>
+{% include 'includes/footer.html' %}
+
+
